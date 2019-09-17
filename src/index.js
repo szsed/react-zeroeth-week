@@ -26,6 +26,8 @@ class SimpleGoldenCornApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = { acorns: props.acorns }
+    this.buyOne = this.buyOne.bind(this);
+    this.eatOne = this.eatOne.bind(this);
   }
 
   buyOne() {
@@ -40,9 +42,9 @@ class SimpleGoldenCornApp extends React.Component {
 
   render() {
     return (<main>
-      <Button func={this.buyOne.bind(this)} str='Buy One' />
+      <Button func={this.buyOne} str='Buy One' />
       <Display>{this.state.acorns}</Display>
-      <Button func={this.eatOne.bind(this)} str='Eat One' />
+      <Button func={this.eatOne} str='Eat One' />
     </main>
     );
   }
