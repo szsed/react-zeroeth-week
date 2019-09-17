@@ -1,3 +1,9 @@
+# Other
+
+dist/*
+!dist/index.html
+
+# Auto-generated part starts here:
 # Logs
 logs
 *.log
