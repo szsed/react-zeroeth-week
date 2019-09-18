@@ -2,21 +2,22 @@ import React from 'react';
 import { Button } from './components/Button';
 import { Display } from './components/Display';
 import { buyOneAction, eatOneAction } from './actions/acorns-actions';
-import store from './store';
 import { connect } from 'react-redux';
 
 class SimpleGoldenCornApp extends React.Component {
   constructor(props) {
     super(props);
+    this.onBuyOne = this.onBuyOne.bind(this);
+    this.onEatOne = this.onEatOne.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  buyOne() {
-    store.dispatch(buyOneAction);
+  onBuyOne() {
+    this.props.onBuyOne();
   }
 
-  eatOne() {
-    store.dispatch(eatOneAction);
+  onEatOne() {
+    this.props.onEatOne();
   }
 
   handleKeyDown(event) {
@@ -37,9 +38,9 @@ class SimpleGoldenCornApp extends React.Component {
 
   render() {
     return (<>
-      <Button func={this.buyOne} str='Buy One' />
+      <Button func={this.onBuyOne} str='Buy One' />
       <Display>{this.props.acorns}</Display>
-      <Button func={this.eatOne} str='Eat One' />
+      <Button func={this.onEatOne} str='Eat One' />
     </>
     );
   }
@@ -47,4 +48,9 @@ class SimpleGoldenCornApp extends React.Component {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps)(SimpleGoldenCornApp);
+const mapActionsToProps = {
+  onBuyOne: buyOneAction,
+  onEatOne: eatOneAction
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(SimpleGoldenCornApp);
