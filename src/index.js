@@ -58,11 +58,11 @@ class SimpleGoldenCornApp extends React.Component {
   }
 
   render() {
-    return (<main>
+    return (<>
       <Button func={this.buyOne} str='Buy One' />
       <Display>{this.state.acorns}</Display>
       <Button func={this.eatOne} str='Eat One' />
-    </main>
+    </>
     );
   }
 }
