@@ -3,8 +3,9 @@ import { Button } from './components/Button';
 import { Display } from './components/Display';
 import { buyOneAction, eatOneAction } from './actions/acorns-actions';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
-class SimpleGoldenCornApp extends React.Component {
+class AcornAppRedux extends React.Component {
   constructor(props) {
     super(props);
     this.onBuyOne = this.onBuyOne.bind(this);
@@ -53,4 +54,4 @@ const mapActionsToProps = {
   onEatOne: eatOneAction
 }
 
-export default connect(mapStateToProps, mapActionsToProps)(SimpleGoldenCornApp);
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(AcornAppRedux));
