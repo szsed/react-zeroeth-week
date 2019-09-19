@@ -1,9 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Button } from './components/Button';
 import { Display } from './components/Display';
 import { buyOneAction, eatOneAction } from './actions/acorns-actions';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
 
 class AcornAppRedux extends React.Component {
   constructor(props) {
@@ -11,6 +11,14 @@ class AcornAppRedux extends React.Component {
     this.onBuyOne = this.onBuyOne.bind(this);
     this.onEatOne = this.onEatOne.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyDown);
   }
 
   onBuyOne() {
@@ -29,29 +37,22 @@ class AcornAppRedux extends React.Component {
     }
   }
 
-  componentDidMount() {
-    document.addEventListener('keydown', this.handleKeyDown);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyDown);
-  }
-
   render() {
-    return (<>
-      <Button func={this.onBuyOne} str='Buy One' />
-      <Display>{this.props.acorns}</Display>
-      <Button func={this.onEatOne} str='Eat One' />
-    </>
+    return (
+      <>
+        <Button func={this.onBuyOne} str="Buy One" />
+        <Display>{this.props.acorns}</Display>
+        <Button func={this.onEatOne} str="Eat One" />
+      </>
     );
   }
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = (state) => state;
 
 const mapActionsToProps = {
   onBuyOne: buyOneAction,
-  onEatOne: eatOneAction
-}
+  onEatOne: eatOneAction,
+};
 
 export default withRouter(connect(mapStateToProps, mapActionsToProps)(AcornAppRedux));

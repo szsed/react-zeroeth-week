@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AcornAppRedux from './AppRedux';
 import AcornAppStates from './AppStates';
 import store from './store';
-import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Navbar } from './components/Navbar';
 import { Home } from './Home';
 
 
-
-ReactDOM.render(<Provider store={store} >
+ReactDOM.render(<Provider store={store}>
   <BrowserRouter>
     <Navbar />
     <Switch>
@@ -20,5 +19,4 @@ ReactDOM.render(<Provider store={store} >
     </Switch>
   </BrowserRouter>
 </Provider>,
-  document.getElementById('root')
-);
+document.getElementById('root'));

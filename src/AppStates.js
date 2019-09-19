@@ -5,7 +5,7 @@ import { Display } from './components/Display';
 class AcornAppStates extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { acorns: props.acorns }
+    this.state = { acorns: props.acorns };
     this.buyOne = this.buyOne.bind(this);
     this.eatOne = this.eatOne.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -38,11 +38,12 @@ class AcornAppStates extends React.Component {
   }
 
   render() {
-    return (<>
-      <Button func={this.buyOne} str='Buy One' />
-      <Display>{this.state.acorns}</Display>
-      <Button func={this.eatOne} str='Eat One' />
-    </>
+    return (
+      <>
+        <Button func={this.buyOne} str="Buy One" />
+        <Display>{this.state.acorns}</Display>
+        <Button func={this.eatOne} str="Eat One" />
+      </>
     );
   }
 }

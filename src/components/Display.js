@@ -1,12 +1,8 @@
-'use strict';
 
 import React from 'react';
 
-export const Display = props => {
-  return (
-    <p>
-      {props.children}
-    </p>
-  )
-}
-
+export const Display = (props) => (
+  <p>
+    {props.children}
+  </p>
+);
