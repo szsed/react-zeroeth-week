@@ -40,9 +40,9 @@ class AcornAppStates extends React.Component {
   render() {
     return (
       <>
-        <Button func={this.buyOne} str="Buy One" />
+        <Button func={this.buyOne} str='Buy One' />
         <Display>{this.state.acorns}</Display>
-        <Button func={this.eatOne} str="Eat One" />
+        <Button func={this.eatOne} str='Eat One' />
       </>
     );
   }

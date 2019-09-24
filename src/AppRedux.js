@@ -31,28 +31,33 @@ class AcornAppRedux extends React.Component {
 
   handleKeyDown(event) {
     if (event.keyCode === 38) {
-      this.buyOne();
+      this.onBuyOne();
     } else if (event.keyCode === 40) {
-      this.eatOne();
+      this.onEatOne();
     }
   }
 
   render() {
     return (
       <>
-        <Button func={this.onBuyOne} str="Buy One" />
+        <Button func={this.onBuyOne} str='Buy One' />
         <Display>{this.props.acorns}</Display>
-        <Button func={this.onEatOne} str="Eat One" />
+        <Button func={this.onEatOne} str='Eat One' />
       </>
     );
   }
 }
 
-const mapStateToProps = (state) => state;
+const mapStateToProps = state => state;
 
 const mapActionsToProps = {
   onBuyOne: buyOneAction,
-  onEatOne: eatOneAction,
+  onEatOne: eatOneAction
 };
 
-export default withRouter(connect(mapStateToProps, mapActionsToProps)(AcornAppRedux));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapActionsToProps
+  )(AcornAppRedux)
+);
